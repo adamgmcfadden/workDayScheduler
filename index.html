@@ -4,36 +4,90 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--link to bootstrap CDN-->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <!--link to fontawesome CDN-->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
+    <!--Link to google fonts CDN-->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <!--link to local style sheet-->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
   <body>
+    <!--Hero at top of scheduler - current day added - rest was done before-->
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
+      <!--Current time displayed here using Moment() added dynamically-->
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
+    <div class="container time-block">
       <!-- Timeblocks go here -->
+      <div class="row">
+        <h2 class="col-md-1">9AM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">10AM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">11AM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">12PM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">1PM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">2PM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">3PM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">4PM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
+      <div class="row">
+        <h2 class="col-md-1">5PM</h2>
+        <textarea class="col-md-10"></textarea>
+        <button class="cold-md-1 saveBtn"></button>
+      </div>
     </div>
 
+    <!--link to jquery library-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--link to moment.js library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!--link to local js file-->
     <script src="assets/js/script.js"></script>
   </body>
 </html>
