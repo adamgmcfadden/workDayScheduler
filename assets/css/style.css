@@ -26,31 +26,36 @@ textarea {
   border-bottom: 10px solid black;
 }
 
-/*!!!!!!!!!!!!!!!!!!!!!NOT SURE WHAT THI IS FOR YET*/
+/*sets white space inside text box*/
 .description {
   white-space: pre-wrap;
 }
 
-/*PARENT ELEMENT ????????????????*/
+/*PARENT ELEMENT for time block*/
 .time-block {
   text-align: center;
   border-radius: 15px;
 }
 
-/*!!!!!!!!!!!!!!!!!!!NOT SURE WHAT THI IS FOR YET*/
+/*Arrange columns - on timeblock div element*/
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
 }
 
-/*!!!!!!!!!!!!!!!PERHAPS THIS IS FOR*/
+/*for right hand column - time section*/
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  font-size: 25px;
+  padding-top: 5px;
 }
 
+/*-------------
+DYNAMIC STYLING
+-------------*/
 /*styling for task thats past*/
 .past {
   background-color: #d3d3d3;
@@ -72,6 +77,7 @@ textarea {
 /*styling for save button*/
 .saveBtn {
   border-left: 1px solid black;
+  width: 80px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
