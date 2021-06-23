@@ -17,52 +17,72 @@ var workDay = [
   moment("5PM", "hA")._i,
 ];
 
-var taskIdCounter = 0;
-for (let i = 0; i < workDay.length; i++) {
-  //create time block dynamically
-  var divEl = document.getElementById("time-block-div");
-  var timeEl = document.createElement("h2");
-  timeEl.className = "col-md-1 hour";
-  timeEl.id = "timeOfDay";
-  timeEl.textContent = workDay[i];
-  divEl.appendChild(timeEl);
+var createSchedule = function () {
+  var taskIdCounter = 0;
+  for (let i = 0; i < workDay.length; i++) {
+    //create time block dynamically
+    var divEl = document.getElementById("time-block-div");
+    var timeEl = document.createElement("h2");
+    timeEl.className = "col-md-1 hour";
+    timeEl.id = "timeOfDay";
+    timeEl.textContent = workDay[i];
+    divEl.appendChild(timeEl);
 
-  //create textarea block
-  var textEl = document.createElement("textarea");
-  textEl.className = "col-md-10 description";
-  textEl.id = "textArea";
-  textEl.setAttribute("data-task-id", taskIdCounter);
-  divEl.appendChild(textEl);
+    //create textarea block
+    var textEl = document.createElement("textarea");
+    textEl.className = "col-md-10 description";
+    textEl.id = "textArea";
+    textEl.textContent = "ogigwpij";
+    textEl.setAttribute("data-task-id", taskIdCounter);
+    divEl.appendChild(textEl);
 
-  //create button blocks
-  var buttonEl = document.createElement("button");
-  buttonEl.className = "col-md-1 saveBtn";
-  buttonEl.id = "button";
-  buttonEl.setAttribute("data-task-id", taskIdCounter);
-  divEl.appendChild(buttonEl);
-  var buttonSpan = document.createElement("span");
-  buttonSpan.className = "oi oi-box";
-  buttonEl.appendChild(buttonSpan);
+    //create button blocks
+    var buttonDiv = document.createElement("div");
+    buttonDiv.className = " row col-md-1";
+    buttonDiv.id = "button-div";
+    divEl.appendChild(buttonDiv);
+    var buttonEl = document.createElement("button");
+    buttonEl.id = "button";
+    buttonEl.className = "saveBtn";
+    buttonEl.setAttribute("data-task-id", taskIdCounter);
+    buttonDiv.appendChild(buttonEl);
+    var buttonSpan = document.createElement("span");
+    buttonSpan.className = "oi oi-document";
+    buttonSpan.id = "button-symbol";
+    buttonSpan.setAttribute("data-task-id", taskIdCounter);
+    buttonEl.appendChild(buttonSpan);
 
-  taskIdCounter++;
+    taskIdCounter++;
 
-  //set color of textarea to be relative to current time
+    //set color of textarea to be relative to current time
 
-  if (currentTime === workDay[i]) {
-    textEl.classList.add("present");
-  } else if (currentTime < workDay[i]) {
-    textEl.classList.add("future");
-  } else {
-    textEl.classList.add("past");
+    if (currentTime === workDay[i]) {
+      textEl.classList.add("present");
+    } else if (currentTime < workDay[i]) {
+      textEl.classList.add("future");
+    } else {
+      textEl.classList.add("past");
+    }
+    // save button functionality
+    buttonDiv.addEventListener("click", function (event) {
+      console.log(event.target);
+
+      if (
+        event.target.matches("#button") ||
+        event.target.matches("#button-symbol")
+      ) {
+        // get the element's task id
+        var taskId = event.target.getAttribute("data-task-id");
+        console.log(taskId);
+      }
+    });
   }
+};
 
-  // save button functionality
-  buttonEl.addEventListener("click", function (event) {
-    event.preventDefault();
-    //localStorage.setItem(taskIdCounter[i], textEl[i]);
-  });
-}
-
+var saveTasks = function () {
+  localStorage.setItem("tasks", tasks);
+};
+createSchedule();
 //   $("#time-block-div").html(
 //     "<h2 class='col-md-1 hour' id='timeOfDay'>" + workDay[i] + "</h2>"
 //   );
