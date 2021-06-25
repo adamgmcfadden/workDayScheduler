@@ -7,16 +7,9 @@ body {
   line-height: 1;
 }
 
-/*styling and positioning for user task input*/
-textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-}
-
+/*-------------------
+UPPER SECTION STYLING
+-------------------*/
 /*styling and positioning for jumbotron*/
 .jumbotron {
   text-align: center;
@@ -26,25 +19,24 @@ textarea {
   border-bottom: 10px solid black;
 }
 
-/*sets white space inside text box*/
-.description {
-  white-space: pre-wrap;
-}
-
-/*PARENT ELEMENT for time block*/
-.time-block {
-  text-align: center;
-  border-radius: 15px;
-}
-
-/*Arrange columns - on timeblock div element*/
+/*---------------------------------------
+MAIN SECTION STYLING - FROM LEFT TO RIGHT
+---------------------------------------*/
+/*PARENT ELEMENT - Arrange columns*/
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
 }
 
-/*for right hand column - time section*/
+/*--------TIME AREA - LEFT COLUMN-------*/
+/*PARENT ELEMENT for time block*/
+.time-block {
+  text-align: center;
+  border-radius: 15px;
+}
+
+/*styling for time section*/
 .hour {
   background-color: #ffffff;
   color: #000000;
@@ -52,28 +44,46 @@ textarea {
   font-size: 25px;
   padding-top: 5px;
 }
+/*------INPUT AREA - MIDDLE COLUMN------*/
 
-/*-------------
-DYNAMIC STYLING
--------------*/
-/*styling for task thats past*/
+/*styling and positioning for user task input*/
+textarea {
+  background: transparent;
+  margin-top: 1px;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
+}
+
+textarea::after {
+  box-sizing: border-box;
+  background-color: #007bff;
+}
+/*sets white space inside text box*/
+.description {
+  white-space: pre-wrap;
+}
+
+/*styling for task thats past --DYNAMIC STYLING--*/
 .past {
   background-color: #d3d3d3;
   color: white;
 }
 
-/*styling for task thats current*/
+/*styling for task thats current --DYNAMIC STYLING--*/
 .present {
   background-color: #ff6961;
   color: white;
 }
 
-/*styling for task in the future*/
+/*styling for task in the future --DYNAMIC STYLING--*/
 .future {
   background-color: #77dd77;
   color: white;
 }
 
+/*-------SAVE BUTTON - RIGHT COLUMN-------*/
 /*styling for save button*/
 .saveBtn {
   border-left: 1px solid black;
@@ -90,6 +100,7 @@ DYNAMIC STYLING
   transition: all 0.3s ease-in-out;
 }
 
+/*save button icon styling*/
 .button-symbol {
   color: white;
 }

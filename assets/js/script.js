@@ -4,7 +4,9 @@
 var currentDay = document.getElementById("currentDay");
 currentDay.textContent = moment().format("dddd, MMMM Do");
 
+//variable created to cross reference time
 var currentTime = moment().format("hA");
+//array of workhours (9-5) // formatted to be crossed referenced later with "currentTime"
 var workDay = [
   moment("09AM", "hA")._i,
   moment("10AM", "hA")._i,
@@ -17,61 +19,82 @@ var workDay = [
   moment("5PM", "hA")._i,
 ];
 
+//function to create elements + set attributes // also checks currentTime vs time in left most column
 var createSchedule = function (event) {
   var taskIdCounter = 0;
   for (let i = 0; i < workDay.length; i++) {
+    //search for divEl by ID
+    var divEl = $("#time-block-div");
+
     //create time block dynamically
-    var divEl = document.getElementById("time-block-div");
-    var timeEl = document.createElement("h2");
-    timeEl.className = "col-md-1 hour";
-    timeEl.id = "timeOfDay";
-    timeEl.textContent = workDay[i];
-    divEl.appendChild(timeEl);
+    var timeEl = $("<h2></h2>")
+      .addClass("col-md-1 hour")
+      .attr("id", "timeOfDay")
+      .text(workDay[i]);
 
     //create textarea block
-    var textEl = document.createElement("textarea");
-    textEl.className = "col-md-10 description";
-    textEl.id = "textArea" + taskIdCounter;
-    //textEl.setAttribute("data-task-id", taskIdCounter);
-    divEl.appendChild(textEl);
+    var textEl = $("<textarea></textarea>")
+      .addClass("col-md-10 description form-control")
+      .attr("id", "textArea" + taskIdCounter)
+      .attr("data-task-id", taskIdCounter)
+      .trigger("focus");
 
-    //create button blocks
-    var buttonDiv = document.createElement("div");
-    buttonDiv.className = " row col-md-1";
-    buttonDiv.id = "button-div";
-    divEl.appendChild(buttonDiv);
-    var buttonEl = document.createElement("button");
-    buttonEl.id = taskIdCounter;
-    buttonEl.className = "saveBtn";
-    //buttonEl.setAttribute("data-task-id", taskIdCounter);
-    buttonDiv.appendChild(buttonEl);
-    var buttonSpan = document.createElement("span");
-    buttonSpan.className = "oi oi-document";
-    buttonSpan.id = "button-symbol";
-    buttonSpan.setAttribute("data-task-id", taskIdCounter);
-    buttonEl.appendChild(buttonSpan);
+    //create button block parent el
+    var buttonDiv = $("<div></div>")
+      .addClass("row col-md-1")
+      .attr("id", "button-div");
+
+    // append child elements to divEl
+    divEl.append(timeEl, textEl, buttonDiv);
+
+    //create buttons
+    var buttonEl = $("<button></button>")
+      .addClass("saveBtn")
+      .attr("id", taskIdCounter);
+
+    //append button to button parent el
+    buttonDiv.append(buttonEl);
+
+    //create span inside button to hold icon
+    var buttonSpan = $("<span></span>")
+      .addClass("oi oi-document")
+      .attr("id", "button-symbol")
+      .attr("data-task-id", taskIdCounter);
+
+    //append span to button
+    buttonEl.append(buttonSpan);
+
+    //check to add class and change background color depending if task is in past, present or future
+    if (currentTime === workDay[i]) {
+      textEl.addClass("present");
+    } else if (currentTime < workDay[i]) {
+      textEl.addClass("future");
+    } else {
+      textEl.addClass("past");
+    }
 
     taskIdCounter++;
   }
 };
+//call createSchedule function
 createSchedule();
 
+//click event for save button
 $(".saveBtn").on("click", function () {
-  //get id
-  let timeBlock = $(this).attr("id");
-  let set = "textArea" + timeBlock;
+  //get id attr from saveBtn
+  let saveBtnId = $(this).attr("id");
+  let keyValue = "textArea" + saveBtnId;
   //get values from description
+  let value = $(`#textArea${saveBtnId}`).val();
 
-  let value = $(`#textArea${timeBlock}`).val();
-  console.log(timeBlock);
-  console.log(value);
   //save value in local storage
-  localStorage.setItem(`${set}`, value);
+  localStorage.setItem(`${keyValue}`, value);
 });
 
 // go through time blocks to get id and check storage
 $(".description").each(function () {
-  let set = $(this).attr("id");
+  let textAreaId = $(this).attr("id");
 
-  $(this).val(localStorage.getItem(`${set}`));
+  // get value from local storage
+  $(this).val(localStorage.getItem(`${textAreaId}`));
 });
