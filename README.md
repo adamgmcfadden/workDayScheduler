@@ -31,6 +31,8 @@
 
 ## Website
 
+https://adamgmcfadden.github.io/workDayScheduler-challenge/
+
 ## Contribution
 
 - Mock up and started code provided by Carleton University
