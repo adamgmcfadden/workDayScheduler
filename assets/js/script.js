@@ -17,7 +17,7 @@ var workDay = [
   moment("5PM", "hA")._i,
 ];
 
-var createSchedule = function () {
+var createSchedule = function (event) {
   var taskIdCounter = 0;
   for (let i = 0; i < workDay.length; i++) {
     //create time block dynamically
@@ -31,9 +31,8 @@ var createSchedule = function () {
     //create textarea block
     var textEl = document.createElement("textarea");
     textEl.className = "col-md-10 description";
-    textEl.id = "textArea";
-    textEl.textContent = "ogigwpij";
-    textEl.setAttribute("data-task-id", taskIdCounter);
+    textEl.id = "textArea" + taskIdCounter;
+    //textEl.setAttribute("data-task-id", taskIdCounter);
     divEl.appendChild(textEl);
 
     //create button blocks
@@ -42,9 +41,9 @@ var createSchedule = function () {
     buttonDiv.id = "button-div";
     divEl.appendChild(buttonDiv);
     var buttonEl = document.createElement("button");
-    buttonEl.id = "button";
+    buttonEl.id = taskIdCounter;
     buttonEl.className = "saveBtn";
-    buttonEl.setAttribute("data-task-id", taskIdCounter);
+    //buttonEl.setAttribute("data-task-id", taskIdCounter);
     buttonDiv.appendChild(buttonEl);
     var buttonSpan = document.createElement("span");
     buttonSpan.className = "oi oi-document";
@@ -53,48 +52,26 @@ var createSchedule = function () {
     buttonEl.appendChild(buttonSpan);
 
     taskIdCounter++;
-
-    //set color of textarea to be relative to current time
-
-    if (currentTime === workDay[i]) {
-      textEl.classList.add("present");
-    } else if (currentTime < workDay[i]) {
-      textEl.classList.add("future");
-    } else {
-      textEl.classList.add("past");
-    }
-    // save button functionality
-    buttonDiv.addEventListener("click", function (event) {
-      console.log(event.target);
-
-      if (
-        event.target.matches("#button") ||
-        event.target.matches("#button-symbol")
-      ) {
-        // get the element's task id
-        var taskId = event.target.getAttribute("data-task-id");
-        console.log(taskId);
-      }
-    });
   }
 };
-
-var saveTasks = function () {
-  localStorage.setItem("tasks", tasks);
-};
 createSchedule();
-//   $("#time-block-div").html(
-//     "<h2 class='col-md-1 hour' id='timeOfDay'>" + workDay[i] + "</h2>"
-//   );
-//   $("#time-block-div").html(
-//     "<textarea class='col-md-10 description' id='textArea'></textarea>"
-//   );
-//   $("time-block-div").html(
-//     "<button class='cold-md-1 saveBtn'><i></i></button>"
-//   );
-// }
 
-let time1 = "10AM";
-let timeFormat = "hA";
-let timeChange = moment(time1, timeFormat);
-console.log(timeChange);
+$(".saveBtn").on("click", function () {
+  //get id
+  let timeBlock = $(this).attr("id");
+  let set = "textArea" + timeBlock;
+  //get values from description
+
+  let value = $(`#textArea${timeBlock}`).val();
+  console.log(timeBlock);
+  console.log(value);
+  //save value in local storage
+  localStorage.setItem(`${set}`, value);
+});
+
+// go through time blocks to get id and check storage
+$(".description").each(function () {
+  let set = $(this).attr("id");
+
+  $(this).val(localStorage.getItem(`${set}`));
+});
