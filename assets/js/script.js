@@ -55,8 +55,8 @@ var createSchedule = function (event) {
     //append button to button parent el
     buttonDiv.append(buttonEl);
 
-    //create span inside button to hold icon
-    var buttonSpan = $("<span></span>")
+    //create <i> inside button to hold icon
+    var buttonSpan = $("<i></i>")
       .addClass("oi oi-document")
       .attr("id", "button-symbol")
       .attr("data-task-id", taskIdCounter);
