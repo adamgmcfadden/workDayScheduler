@@ -57,7 +57,7 @@ var createSchedule = function (event) {
 
     //create <i> inside button to hold icon
     var buttonSpan = $("<i></i>")
-      .addClass("oi oi-document")
+      .addClass("fas fa-save fa-2x")
       .attr("id", "button-symbol")
       .attr("data-task-id", taskIdCounter);
 

@@ -19,9 +19,8 @@
 - Styling
 
 * Bootstrap.min
-* Font Awesome (was given in starter code - did not use)
+* Font Awesome
 * Google Fonts
-* Open Iconic (used instead of font-Awesome)
 
 - Programming
 
