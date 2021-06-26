@@ -29,13 +29,16 @@
 
 ## Screenshots
 
+![screenshot](https://user-images.githubusercontent.com/83710803/123520339-3ba7ad00-d67e-11eb-98a4-ded1ff203cd5.png)
+
 ## Website
+
+https://adamgmcfadden.github.io/workDayScheduler-challenge/
 
 ## Contribution
 
 - Mock up and started code provided by Carleton University
 - Remaining code provided by Adam Girard-McFadden
-- credit to Jacob Banks for helping me fix a bug (displaying saved Data correctly)
 
 ## Assignment/Application Description:
 
