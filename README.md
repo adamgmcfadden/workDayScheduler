@@ -17,15 +17,14 @@
 ## List of API libraries referenced:
 
 - Styling
-
-* Bootstrap.min
-* Font Awesome
-* Google Fonts
+  - Bootstrap.min
+  - Font Awesome
+  - Google Fonts
 
 - Programming
 
-* JQuery.min
-* Moment.js.min
+  - JQuery.min
+  - Moment.js.min
 
 ## Screenshots
 
