@@ -35,7 +35,7 @@
 
 - Mock up and started code provided by Carleton University
 - Remaining code provided by Adam Girard-McFadden
-- credit to Jacob Banks for helping me fix a bug (displaying savedData correctly)
+- credit to Jacob Banks for helping me fix a bug (displaying saved Data correctly)
 
 ## Assignment/Application Description:
 
