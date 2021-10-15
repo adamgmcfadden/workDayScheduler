@@ -2,7 +2,7 @@
 
 ## Website
 
-https://adamgmcfadden.github.io/workDayScheduler-challenge/
+https://adamgmcfadden.github.io/workDayScheduler/
 
 ## Description
 
