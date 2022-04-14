@@ -6,8 +6,9 @@ currentDay.textContent = moment().format("dddd, MMMM Do");
 
 //variable created to cross reference time
 var currentTime = moment().format("hA");
-//array of workhours (9-5) // formatted to be crossed referenced later with "currentTime"
+//array of workhours (8-5) // formatted to be crossed referenced later with "currentTime"
 var workDay = [
+  moment("08AM", "hA")._i,
   moment("09AM", "hA")._i,
   moment("10AM", "hA")._i,
   moment("11AM", "hA")._i,
